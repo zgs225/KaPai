@@ -8,10 +8,14 @@
 
 #import "KaPaiViewController.h"
 #import "PlayingCardDeck.h"
+#import "PlayingCard.h"
 
 @interface KaPaiViewController ()
 
 @property (nonatomic, strong) Deck *deck;
+
+@property (weak, nonatomic) IBOutlet UILabel *flipCountLabel;
+@property (nonatomic) NSUInteger flipCount;
 
 @end
 
@@ -23,6 +27,12 @@
         _deck = [[PlayingCardDeck alloc] init];
     }
     return _deck;
+}
+
+- (void)setFlipCount:(NSUInteger)flipCount
+{
+    _flipCount = flipCount;
+    [self.flipCountLabel setText:[NSString stringWithFormat:@"Flips: %lu", (unsigned long)self.flipCount]];
 }
 
 - (void)viewDidLoad
@@ -48,7 +58,9 @@
         [sender setBackgroundImage:[UIImage imageNamed:@"blankcard"]
                           forState:UIControlStateNormal];
         [sender setTitle:card.content forState:UIControlStateNormal];
+        [sender setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     }
+    self.flipCount++;
 }
 
 @end

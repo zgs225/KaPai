@@ -35,6 +35,17 @@
     return [rankStrings[self.rank] stringByAppendingString:self.suit];
 }
 
+- (UIColor *)suitColor
+{
+    NSString *suit = self.suit;
+    if ([suit isEqualToString:@"♦︎"] ||
+        [suit isEqualToString:@"♥︎"]) {
+        return [UIColor redColor];
+    } else {
+        return [UIColor blackColor];
+    }
+}
+
 + (NSArray *)rankStrings
 {
     return @[@"?", @"A", @"2", @"3", @"4", @"5", @"6", @"7", @"8", @"9", @"10", @"J", @"Q", @"K"];

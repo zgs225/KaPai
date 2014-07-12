@@ -17,4 +17,6 @@
 + (NSArray *)validSutes;
 + (NSUInteger)maxRank;
 
+- (UIColor *)suitColor;
+
 @end
