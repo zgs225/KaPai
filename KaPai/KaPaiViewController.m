@@ -53,14 +53,17 @@
         [sender setBackgroundImage:[UIImage imageNamed:@"cardback"]
                           forState:UIControlStateNormal];
         [sender setTitle:@"" forState:UIControlStateNormal];
+        self.flipCount++;
     } else {
         Card *card = [self.deck drawRandomCard];
-        [sender setBackgroundImage:[UIImage imageNamed:@"blankcard"]
-                          forState:UIControlStateNormal];
-        [sender setTitle:card.content forState:UIControlStateNormal];
-        [sender setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        if (card) {
+            [sender setBackgroundImage:[UIImage imageNamed:@"blankcard"]
+                              forState:UIControlStateNormal];
+            [sender setTitle:card.content forState:UIControlStateNormal];
+            [sender setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+            self.flipCount++;
+        }
     }
-    self.flipCount++;
 }
 
 @end
